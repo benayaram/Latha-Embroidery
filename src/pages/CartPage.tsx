@@ -1,5 +1,5 @@
 import React from 'react';
-import { Trash2 } from 'lucide-react';
+import { Trash2, Share2 } from 'lucide-react';
 import { type Product } from '../types';
 
 export function CartPage() {
@@ -9,20 +9,20 @@ export function CartPage() {
   });
 
   const removeFromCart = (productId: string) => {
-    const newCart = cart.filter((item) => item.id !== productId);
-    setCart(newCart);
-    localStorage.setItem('cart', JSON.stringify(newCart));
+    if (confirm('Are you sure you want to remove this item from your cart?')) {
+      const newCart = cart.filter((item) => item.id !== productId);
+      setCart(newCart);
+      localStorage.setItem('cart', JSON.stringify(newCart));
+    }
   };
 
   const total = cart.reduce((sum, item) => sum + item.price, 0);
 
   const shareOnWhatsApp = () => {
-    const predefinedPhoneNumber = "+917780549645"; // Replace with the desired phone number (including the country code)
-    const message = `My Order:\n\n${cart
-        .map((item) => `${item.title} - ₹${item.price}`)
-        .join('\n')}\n\nTotal: ₹${total}`;
-    
-    window.open(`https://wa.me/${predefinedPhoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+    const message = `My Shopping Cart:\n\n${cart
+      .map((item) => `ID: ${item.id}\n${item.title} - ₹${item.price}`)
+      .join('\n\n')}\n\nTotal: ₹${total}`;
+    window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
   };
 
   if (cart.length === 0) {
@@ -54,7 +54,8 @@ export function CartPage() {
               />
               <div className="ml-6 flex-1">
                 <h3 className="text-lg font-semibold text-gray-900">{item.title}</h3>
-                <p className="text-gray-600">{item.description}</p>
+                <p className="text-sm text-gray-500">Product ID: {item.id}</p>
+                <p className="text-gray-600 mt-1">{item.description}</p>
               </div>
               <div className="ml-6">
                 <p className="text-lg font-semibold text-gray-900">₹{item.price}</p>
@@ -73,12 +74,15 @@ export function CartPage() {
             <span className="text-lg font-semibold text-gray-900">Total:</span>
             <span className="text-2xl font-bold text-indigo-600">₹{total}</span>
           </div>
-          <button
-            onClick={shareOnWhatsApp}
-            className="mt-6 w-full bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors"
-          >
-            Place Order via WhatsApp
-          </button>
+          <div className="mt-6 flex gap-4">
+            <button
+              onClick={shareOnWhatsApp}
+              className="flex-1 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center gap-2"
+            >
+              <Share2 className="h-5 w-5" />
+              Place Order via WhatsApp
+            </button>
+          </div>
         </div>
       </div>
     </div>

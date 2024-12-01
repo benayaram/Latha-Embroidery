@@ -12,11 +12,16 @@ export function ProductCard({ product, onClick }: ProductCardProps) {
       className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transform transition-transform hover:scale-105"
       onClick={onClick}
     >
-      <img
-        src={product.image}
-        alt={product.title}
-        className="w-full h-48 object-cover"
-      />
+      <div className="relative">
+        <img
+          src={product.image}
+          alt={product.title}
+          className="w-full h-48 object-cover"
+        />
+        <span className="absolute top-2 right-2 bg-black bg-opacity-50 text-white px-2 py-1 rounded text-sm">
+          ID: {product.id}
+        </span>
+      </div>
       <div className="p-4">
         <h3 className="text-lg font-semibold text-gray-800">{product.title}</h3>
         <p className="text-gray-600 mt-1 line-clamp-2">{product.description}</p>
@@ -28,7 +33,7 @@ export function ProductCard({ product, onClick }: ProductCardProps) {
             {product.stock > 0 ? `${product.stock} left` : 'Out of stock'}
           </span>
         </div>
-        <div className="mt-2 flex gap-2">
+        <div className="mt-2 flex flex-wrap gap-2">
           {product.tags.map((tag) => (
             <span
               key={tag}
