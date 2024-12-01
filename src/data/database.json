@@ -1,0 +1,37 @@
+{
+  "categories": [
+    { "id": 1, "name": "Neck Designs" },
+    { "id": 2, "name": "Blouse Designs" },
+    { "id": 3, "name": "Saree Borders" }
+  ],
+  "products": [
+    {
+      "id": "P001",
+      "title": "Floral Neck Design",
+      "description": "Elegant floral pattern perfect for traditional wear",
+      "price": 500,
+      "image": "https://images.unsplash.com/photo-1528870884180-5649b20f6435?auto=format&fit=crop&q=80&w=800",
+      "tags": ["Simple"],
+      "category": "Neck Designs",
+      "stock": 10
+    },
+    {
+      "id": "P002",
+      "title": "Traditional Blouse Design",
+      "description": "Intricate traditional pattern for special occasions",
+      "price": 800,
+      "image": "https://images.unsplash.com/photo-1550639525-c97d455acf70?auto=format&fit=crop&q=80&w=800",
+      "tags": ["Heavy"],
+      "category": "Blouse Designs",
+      "stock": 5
+    }
+  ],
+  "notifications": [
+    {
+      "id": "N001",
+      "title": "New Collection Launch",
+      "description": "Explore our latest festive collection!",
+      "image": "https://images.unsplash.com/photo-1534859108275-a3a6f0a05fb8?auto=format&fit=crop&q=80&w=800"
+    }
+  ]
+}
