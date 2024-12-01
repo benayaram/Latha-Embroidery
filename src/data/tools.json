@@ -1,0 +1,43 @@
+[
+    {
+      "id": "T001",
+      "title": "Professional Embroidery Hoop Set",
+      "description": "Set of 5 bamboo hoops in different sizes (4\" to 12\")",
+      "price": 1200,
+      "image": "https://images.unsplash.com/photo-1528870884180-5649b20f6435",
+      "tags": ["Hoops", "Essential"],
+      "category": "Tools",
+      "stock": 15
+    },
+    {
+      "id": "T002",
+      "title": "Premium Embroidery Scissors",
+      "description": "Sharp, precise scissors for detailed embroidery work",
+      "price": 800,
+      "image": "https://images.unsplash.com/photo-1590687764724-4d9dc731e04c",
+      "tags": ["Scissors", "Essential"],
+      "category": "Tools",
+      "stock": 20
+    },
+    {
+      "id": "T003",
+      "title": "Embroidery Needle Set",
+      "description": "Set of 30 needles in various sizes with threader",
+      "price": 350,
+      "image": "https://images.unsplash.com/photo-1519340241574-2cec6aef0c01",
+      "tags": ["Needles", "Essential"],
+      "category": "Tools",
+      "stock": 50
+    },
+    {
+      "id": "T004",
+      "title": "Thread Organizer Box",
+      "description": "Clear plastic box with 36 compartments for thread storage",
+      "price": 600,
+      "image": "https://images.unsplash.com/photo-1528870884180-5649b20f6435",
+      "tags": ["Storage", "Organization"],
+      "category": "Tools",
+      "stock": 10
+    }
+  ]
+  

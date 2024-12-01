@@ -12,7 +12,7 @@ export function useEmailSubscription() {
         'YOUR_SERVICE_ID',
         'YOUR_TEMPLATE_ID',
         {
-          to_email: 'admin@embroiderystore.com',
+          to_email: 'lathaembroidery1@gmail.com',
           subscriber_email: email,
           message: `New subscription request from ${email}`,
         },

@@ -31,7 +31,7 @@ export function AdminDashboard() {
             className="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors"
           >
             <Download className="h-5 w-5" />
-            Download Database
+            Download Updated Database
           </button>
         </div>
 

@@ -13,7 +13,7 @@ export function Hero() {
           className="absolute w-full h-full object-cover"
         >
           <source
-            src="https://player.vimeo.com/external/451898620.sd.mp4?s=a3f3c5e8f19394d4c9e8e7b4e6cd2b3a0b212fd8&profile_id=164&oauth2_token_id=57447761"
+            src="https://videos.pexels.com/video-files/11955972/11955972-hd_1920_1080_25fps.mp4"
             type="video/mp4"
           />
         </video>

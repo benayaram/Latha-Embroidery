@@ -7,29 +7,53 @@ export function CustomOrderPage() {
     email: '',
     phone: '',
     productType: '',
-    image: '',
+    image: '', // Image file data URL
+    errorMessage: '', // Error message for file size
   });
 
+  // Handle image upload
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
+      // File size limit (10MB)
+      const MAX_SIZE = 10 * 1024 * 1024; // 10MB
+
+      if (file.size > MAX_SIZE) {
+        setFormData((prev) => ({
+          ...prev,
+          errorMessage: 'File size exceeds the 10MB limit. Please upload a smaller file.',
+        }));
+        return;
+      }
+
       const reader = new FileReader();
       reader.onloadend = () => {
-        setFormData((prev) => ({ ...prev, image: reader.result as string }));
+        const imageDataUrl = reader.result as string;
+        setFormData((prev) => ({
+          ...prev,
+          image: imageDataUrl,
+          errorMessage: '', // Clear the error message when a valid image is uploaded
+        }));
+        localStorage.setItem('customOrderImage', imageDataUrl); // Save to localStorage
       };
       reader.readAsDataURL(file);
     }
   };
 
+  // Handle form submission and WhatsApp message
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
+    const predefinedPhoneNumber = "+917780549645"; // Replace with the desired phone number (including the country code)
+
     const message = `Custom Order Request:\n
 Name: ${formData.name}
 Email: ${formData.email}
 Phone: ${formData.phone}
-Product Type: ${formData.productType}`;
+Product Type: ${formData.productType}
+Image: [Image Preview is Available]`; // Send message with image description, but not base64
 
-    window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
+    // Open WhatsApp link (will not send the image directly, only the message)
+    window.open(`https://wa.me/${predefinedPhoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
   return (
@@ -94,6 +118,8 @@ Product Type: ${formData.productType}`;
               <option value="Blouse">Blouse</option>
             </select>
           </div>
+
+          {/* File upload with preview */}
           <div>
             <label className="block text-sm font-medium text-gray-700">Design Image</label>
             <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
@@ -117,7 +143,19 @@ Product Type: ${formData.productType}`;
                 <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
               </div>
             </div>
+            {/* Display error message if file size is too large */}
+            {formData.errorMessage && (
+              <p className="mt-2 text-red-600 text-sm">{formData.errorMessage}</p>
+            )}
+
+            {/* Image Preview */}
+            {formData.image && (
+              <div className="mt-4">
+                <img src={formData.image} alt="Image Preview" className="max-w-xs mx-auto" />
+              </div>
+            )}
           </div>
+
           <button
             type="submit"
             className="w-full bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors"

@@ -1,20 +1,7 @@
 import React from 'react';
 import { Phone, Mail, MapPin } from 'lucide-react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
-
-// Fix for default marker icon
-delete (L.Icon.Default.prototype as any)._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
-  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-});
 
 export function ContactPage() {
-  const position: [number, number] = [19.0760, 72.8777]; // Mumbai coordinates
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.currentTarget;
@@ -54,7 +41,6 @@ export function ContactPage() {
                   type="email"
                   name="email"
                   id="email"
-                  required
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                 />
               </div>
@@ -86,14 +72,14 @@ export function ContactPage() {
                 <Phone className="h-6 w-6 text-indigo-600 mt-1" />
                 <div className="ml-4">
                   <h3 className="text-lg font-medium text-gray-900">Phone</h3>
-                  <p className="text-gray-600">+91 123 456 7890</p>
+                  <p className="text-gray-600">+91 8500793895</p>
                 </div>
               </div>
               <div className="flex items-start">
                 <Mail className="h-6 w-6 text-indigo-600 mt-1" />
                 <div className="ml-4">
                   <h3 className="text-lg font-medium text-gray-900">Email</h3>
-                  <p className="text-gray-600">contact@embroiderystore.com</p>
+                  <p className="text-gray-600">lathaembroidery1@gmail.com</p>
                 </div>
               </div>
               <div className="flex items-start">
@@ -101,9 +87,9 @@ export function ContactPage() {
                 <div className="ml-4">
                   <h3 className="text-lg font-medium text-gray-900">Address</h3>
                   <p className="text-gray-600">
-                    123 Embroidery Lane<br />
-                    Craft District<br />
-                    Mumbai, Maharashtra 400001
+                    Latha Embroidery<br />
+                    Mallisala<br />
+                    Andhra Pradesh, India
                   </p>
                 </div>
               </div>
@@ -111,28 +97,7 @@ export function ContactPage() {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md overflow-hidden">
-          <div className="h-[600px]">
-            <MapContainer
-              center={position}
-              zoom={13}
-              style={{ height: '100%', width: '100%' }}
-            >
-              <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              />
-              <Marker position={position}>
-                <Popup>
-                  <div className="p-2">
-                    <h3 className="font-semibold">Embroidery Store</h3>
-                    <p>123 Embroidery Lane, Mumbai</p>
-                  </div>
-                </Popup>
-              </Marker>
-            </MapContainer>
-          </div>
-        </div>
+        
       </div>
     </div>
   );

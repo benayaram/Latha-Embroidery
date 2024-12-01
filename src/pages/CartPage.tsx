@@ -17,10 +17,12 @@ export function CartPage() {
   const total = cart.reduce((sum, item) => sum + item.price, 0);
 
   const shareOnWhatsApp = () => {
+    const predefinedPhoneNumber = "+917780549645"; // Replace with the desired phone number (including the country code)
     const message = `My Order:\n\n${cart
-      .map((item) => `${item.title} - ₹${item.price}`)
-      .join('\n')}\n\nTotal: ₹${total}`;
-    window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
+        .map((item) => `${item.title} - ₹${item.price}`)
+        .join('\n')}\n\nTotal: ₹${total}`;
+    
+    window.open(`https://wa.me/${predefinedPhoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
   if (cart.length === 0) {
