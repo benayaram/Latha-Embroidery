@@ -8,7 +8,7 @@ export function ContactPage() {
     const formData = new FormData(form);
     const subject = 'Contact Form Submission';
     const body = `Name: ${formData.get('name')}\nEmail: ${formData.get('email')}\nMessage: ${formData.get('message')}`;
-    window.location.href = `mailto:contact@embroiderystore.com?subject=${encodeURIComponent(
+    window.location.href = `mailto:lathaembroidery1@gmail.com?subject=${encodeURIComponent(
       subject
     )}&body=${encodeURIComponent(body)}`;
   };
